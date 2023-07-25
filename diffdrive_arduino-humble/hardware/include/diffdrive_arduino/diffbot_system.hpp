@@ -1,17 +1,3 @@
-// Copyright 2021 ros2_control Development Team
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 #ifndef DIFFDRIVE_ARDUINO__DIFFBOT_SYSTEM_HPP_
 #define DIFFDRIVE_ARDUINO__DIFFBOT_SYSTEM_HPP_
 
@@ -41,8 +27,10 @@ class DiffDriveArduinoHardware : public hardware_interface::SystemInterface
 
 struct Config
 {
-  std::string left_wheel_name = "";
-  std::string right_wheel_name = "";
+  std::string left_back_wheel_name = "";
+  std::string right_back_wheel_name = "";
+  std::string left_front_wheel_name = "";
+  std::string right_front_wheel_name = "";
   float loop_rate = 0.0;
   std::string device = "";
   int baud_rate = 0;
@@ -97,8 +85,10 @@ private:
 
   ArduinoComms comms_;
   Config cfg_;
-  Wheel wheel_l_;
-  Wheel wheel_r_;
+  Wheel left_back_wheel_;
+  Wheel right_back_wheel_;
+  Wheel left_front_wheel_;
+  Wheel right_front_wheel_;
 };
 
 }  // namespace diffdrive_arduino
